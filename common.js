@@ -171,15 +171,15 @@ function makeChart(info, show = true) {
 	return u;
 }
 
-function mergeInfo(info_ori, info_run) {
+function mergeInfo(info_ori, info_run, suffix_ori = "_ori", suffix_run = "_run") {
 	let label_ori = info_ori.labels.slice(1);
 	for(let i = 0; i < label_ori.length; i++) {
-		label_ori[i] += "_ori";
+		label_ori[i] += suffix_ori;
 	}
 
 	let label_run = info_run.labels.slice(1);
 	for(let i = 0; i < label_run.length; i++) {
-		label_run[i] += "_run";
+		label_run[i] += suffix_run;
 	}
 
 	let labels = []
