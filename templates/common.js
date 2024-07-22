@@ -104,12 +104,13 @@ function randColor(lbl) {
 
 
 
-function makeChart(info) {
+function makeChart(info, show = true) {
 	let series = [];
 
 	for (let i = 1; i < info.data.length; i++) {
 		series.push({
 			label: info.labels[i],
+			show: show,
 			stroke: randColor(info.labels[i]),
 			value: (self, v) => v == null ? null : v.toString(),
 		});
@@ -170,5 +171,48 @@ function makeChart(info) {
 	return u;
 }
 
+/**
+ * Merges and sorts data from multiple information objects.
+ * @param {Array<Object>} items An array of objects, where each object contains an `info` object and its corresponding `suffix`. Example: [{info: info1, suffix: "_v1"}, {info: info2, suffix: "_v2"}]
+ * @param {string} title_suffix A suffix to append to the final title.
+ * @returns {Object} A new info object with the combined and sorted data.
+ */
+function mergeInfo(items, title_suffix = "") {
+	// 1. Handle edge cases: return a default structure if input is empty or invalid.
+	if (!Array.isArray(items) || items.length === 0) {
+		return { title: `Empty comparison${title_suffix}`, labels: [], data: [] };
+	}
+
+	const firstItemInfo = items[0].info;
+	const xAxisLabel = firstItemInfo.labels[0]; 
+	const xAxisData = firstItemInfo.data[0];
+
+	// 2. Use `flatMap` to process all items, creating a single combined array.
+	// This is more concise than looping and concatenating.
+	const combinedData = items.flatMap(({ info, suffix }) => {
+		// Slice(1) to skip the x-axis element, which is handled separately.
+		const labels = info.labels.slice(1);
+		const dataPoints = info.data.slice(1);
+		
+		// Map each label/data pair to a new object with the suffixed label.
+		return labels.map((label, index) => ({
+			label: label + suffix,
+			data: dataPoints[index],
+		}));
+	});
+
+	// 3. Sort the combined data based on the new labels.
+	// Using `localeCompare` is more robust for string sorting.
+	combinedData.sort((a, b) => a.label.localeCompare(b.label));
+
+	// 4. Construct the final object.
+	return {
+		title: `${firstItemInfo.title}${title_suffix} comparison`,
+		// Prepend the x-axis label and map the rest from the sorted data.
+		labels: [xAxisLabel, ...combinedData.map(item => item.label)],
+		// Prepend the x-axis data and map the rest from the sorted data.
+		data: [xAxisData, ...combinedData.map(item => item.data)],
+	};
+}
 
 document.getElementById("main").insertAdjacentHTML('beforeend', prefix);
