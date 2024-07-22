@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>CanMV-K230 LUT4 benchmark</title>
+		<link rel="stylesheet" href="../uPlot/dist/uPlot.min.css">
+		<link rel="stylesheet" href="../base.css">
+	</head>
+	<body>
+	<div id="main" class="base"><header><h1>CanMV-K230 (Kendryte K230, C908) LUT4 benchmark</h1></header></div>
+	<script>let module = {};</script>
+	<script src="../uPlot/dist/uPlot.cjs.js"></script>
+	<script src="../LUT4.js"></script>
+	<script src="../common.js"></script>
+	<script src="data/LUT4.js"></script>
+	<script src="../canmv_k230/data/LUT4.js"></script>
+<script>
+
+for (const info of infos)
+	makeChart(info);
+
+for (let i = 0; i < infos.length; i++) {
+	makeChart(mergeInfo(infos[i], k230.run_results[i], "_ux900", "_c908"), false);
+}
+
+</script>
+</body>
+</html>
