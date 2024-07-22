@@ -19,10 +19,9 @@
 for (const info of infos)
 	makeChart(info);
 
-let merge_info = mergeInfo(infos[0], k230.run_results[0], "_ux900", "_c908");
-makeChart(merge_info, false);
-merge_info = mergeInfo(infos[1], k230.run_results[1], "_ux900", "_c908");
-makeChart(merge_info, false);
+for (let i = 0; i < infos.length; i++) {
+	makeChart(mergeInfo(infos[i], k230.run_results[i], "_ux900", "_c908"), false);
+}
 
 
 </script>
