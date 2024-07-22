@@ -13,6 +13,7 @@
 	<script src="../uPlot/dist/uPlot.cjs.js"></script>
 	<script src="../utf8_count.js"></script>
 	<script src="../common.js"></script>
+	<script src="data/utf8_count.js"></script>
 <script>
 
 let infos = [
@@ -101,8 +102,18 @@ data: [
 
 ];
 
+for (info of utf8_count.run_results) {
+	info.title += " run";
+}
+infos.push(...utf8_count.run_results);
+
 for (const info of infos)
 	makeChart(info);
+
+let merge_info = mergeInfo(infos[0], infos[2]);
+makeChart(merge_info, false);
+merge_info = mergeInfo(infos[1], infos[3]);
+makeChart(merge_info, false);
 
 </script>
 </body>
