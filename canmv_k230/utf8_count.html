@@ -102,10 +102,10 @@ data: [
 
 ];
 
-for (info of utf8_count.run_results) {
+for (info of k230.run_results) {
 	info.title += " run";
 }
-infos.push(...utf8_count.run_results);
+infos.push(...k230.run_results);
 
 for (const info of infos)
 	makeChart(info);

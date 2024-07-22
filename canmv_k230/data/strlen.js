@@ -1,4 +1,4 @@
-let strlen = {
+let k230 = {
     run_results: [
         {
             title: "strlen",

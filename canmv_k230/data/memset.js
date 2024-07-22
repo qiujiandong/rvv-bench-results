@@ -1,4 +1,4 @@
-let memset = {
+let k230 = {
     run_results: [
         {
             title: "memset",

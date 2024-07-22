@@ -1,4 +1,4 @@
-let byteswap = {
+let k230 = {
     run_results: [
         {
             title: "byteswap32",

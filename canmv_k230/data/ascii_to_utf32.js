@@ -1,4 +1,4 @@
-let ascii_to_utf32 = {
+let k230 = {
     run_results: [{
         title: "ascii to utf32",
         labels: ["0", "scalar", "scalar_autovec", "rvv_ext_m1", "rvv_ext_m2", "rvv_vsseg_m1", "rvv_vsseg_m2", "rvv_vss_m1", "rvv_vss_m2",],

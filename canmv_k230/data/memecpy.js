@@ -1,4 +1,4 @@
-let memcpy = {
+let k230 = {
     run_results: [
         {
             title: "memcpy",

@@ -1,4 +1,4 @@
-let poly1305 = {
+let k230 = {
     run_results: [
         {
             title: "poly1305 aligned",

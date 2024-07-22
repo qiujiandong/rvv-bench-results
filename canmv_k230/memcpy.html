@@ -91,10 +91,10 @@ data: [
 
 ];
 
-for (info of memcpy.run_results) {
+for (info of k230.run_results) {
 	info.title += " run";
 }
-infos.push(...memcpy.run_results);
+infos.push(...k230.run_results);
 
 for (const info of infos)
 	makeChart(info);

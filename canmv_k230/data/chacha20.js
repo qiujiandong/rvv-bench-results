@@ -1,4 +1,4 @@
-let chacha20 = {
+let k230 = {
     run_results: [
         {
             title: "chacha20 aligned",

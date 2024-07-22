@@ -1,4 +1,4 @@
-let lut4 = {
+let k230 = {
     run_results: [{
         title: "LUT4",
         labels: ["0", "scalar", "scalar_autovec", "rvv_gather_m1", "rvv_gather_m2", "rvv_gather_m4", "rvv_gather_m8", "rvv_m1_gathers_m2", "rvv_m1_gathers_m4", "rvv_m1_gathers_m8", "rvv_vluxei8_m1", "rvv_vluxei8_m2", "rvv_vluxei8_m4", "rvv_vluxei8_m8", "rvv_vloxei8_m1", "rvv_vloxei8_m2", "rvv_vloxei8_m4", "rvv_vloxei8_m8",],
