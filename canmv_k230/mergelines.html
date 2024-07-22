@@ -13,6 +13,7 @@
 	<script src="../uPlot/dist/uPlot.cjs.js"></script>
 	<script src="../mergelines.js"></script>
 	<script src="../common.js"></script>
+	<script src="data/mergelines.js"></script>
 <script>
 
 let infos = [
@@ -116,8 +117,22 @@ data: [
 
 ];
 
+for (info of mergelines.run_results) {
+	info.title += " run";
+}
+infos.push(...mergelines.run_results);
+
 for (const info of infos)
 	makeChart(info);
+
+let merge_info = mergeInfo(infos[0], infos[4]);
+makeChart(merge_info, false);
+merge_info = mergeInfo(infos[1], infos[5]);
+makeChart(merge_info, false);
+merge_info = mergeInfo(infos[2], infos[6]);
+makeChart(merge_info, false);
+merge_info = mergeInfo(infos[3], infos[7]);
+makeChart(merge_info, false);
 
 </script>
 </body>
