@@ -13,6 +13,7 @@
 	<script src="../uPlot/dist/uPlot.cjs.js"></script>
 	<script src="../ascii_to_utf32.js"></script>
 	<script src="../common.js"></script>
+	<script src="data/ascii_to_utf32.js"></script>
 <script>
 
 let infos = [
@@ -52,8 +53,18 @@ data: [
 
 ];
 
+for (info of ascii_to_utf32.run_results) {
+	info.title += " run";
+}
+infos.push(...ascii_to_utf32.run_results);
+
 for (const info of infos)
 	makeChart(info);
+
+let merge_info = mergeInfo(infos[0], infos[2]);
+makeChart(merge_info, false);
+merge_info = mergeInfo(infos[1], infos[3]);
+makeChart(merge_info, false);
 
 </script>
 </body>
