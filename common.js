@@ -104,12 +104,13 @@ function randColor(lbl) {
 
 
 
-function makeChart(info) {
+function makeChart(info, show = true) {
 	let series = [];
 
 	for (let i = 1; i < info.data.length; i++) {
 		series.push({
 			label: info.labels[i],
+			show: show,
 			stroke: randColor(info.labels[i]),
 			value: (self, v) => v == null ? null : v.toString(),
 		});
@@ -168,6 +169,53 @@ function makeChart(info) {
 	});
 
 	return u;
+}
+
+function mergeInfo(info_ori, info_run) {
+	let label_ori = info_ori.labels.slice(1);
+	for(let i = 0; i < label_ori.length; i++) {
+		label_ori[i] += "_ori";
+	}
+
+	let label_run = info_run.labels.slice(1);
+	for(let i = 0; i < label_run.length; i++) {
+		label_run[i] += "_run";
+	}
+
+	let labels = []
+	let data = []
+
+	// x axis
+	labels.push(info_ori.data[0]);
+	data.push(info_ori.data[0]);
+
+	labels = labels.concat(label_ori);
+	labels = labels.concat(label_run);
+	data = data.concat(info_ori.data.slice(1));
+	data = data.concat(info_run.data.slice(1));
+
+	const combined = labels.map((label, index) => {
+		return { label: label, data: data[index] };
+	});
+
+	combined.sort((a, b) => {
+		if (a.label < b.label) {
+		  return -1;
+		}
+		if (a.label > b.label) {
+		  return 1;
+		}
+		return 0;
+	});
+
+	const sortedLabels = combined.map(item => item.label);
+	const sortedData = combined.map(item => item.data);
+
+	return {
+		title: info_ori.title + " comparison",
+		labels: sortedLabels,
+		data: sortedData,
+	};
 }
 
 
