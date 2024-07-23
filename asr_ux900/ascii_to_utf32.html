@@ -15,6 +15,7 @@
 	<script src="../common.js"></script>
 	<script src="data/ascii_to_utf32.js"></script>
 	<script src="../canmv_k230/data/ascii_to_utf32.js"></script>
+	<script src="../spacemit_k1/data/ascii_to_utf32.js"></script>
 <script>
 
 for (const info of infos)
@@ -22,6 +23,10 @@ for (const info of infos)
 
 for (let i = 0; i < infos.length; i++) {
 	makeChart(mergeInfo(infos[i], k230.run_results[i], "_ux900", "_c908"), false);
+}
+
+for (let i = 0; i < infos.length; i++) {
+	makeChart(mergeInfo(infos[i], spacemit_k1.run_results[i], "_ux900", "_X60"), false);
 }
 
 </script>
