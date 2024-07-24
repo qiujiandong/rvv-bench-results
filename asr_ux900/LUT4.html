@@ -16,19 +16,44 @@
 	<script src="data/LUT4.js"></script>
 	<script src="../canmv_k230/data/LUT4.js"></script>
 	<script src="../spacemit_k1/data/LUT4.js"></script>
-<script>
 
-for (const info of infos)
-	makeChart(info);
+	<ul class="base">
+		<li><a href="#normal">ASR normal results</a></li>
+		<li><a href="#k230_cmp">ASR results compare with K230 results</a></li>
+		<li><a href="#k1_cmp">ASR results compare with SpacemiT K1 results</a></li>
+		<li><a href="#nofence">ASR nofence results</a></li>
+		<li><a href="#nofence_cmp">ASR nofence results compare with SpacemiT K1 results</a></li>
+	</ul>
 
-for (let i = 0; i < infos.length; i++) {
-	makeChart(mergeInfo(infos[i], k230.run_results[i], "_ux900", "_c908"), false);
-}
+	<h4 id="normal" class="base">ASR normal results</h4>
+	<script>
+	for (const info of infos)
+		makeChart(info);
+	</script>
 
-for (let i = 0; i < infos.length; i++) {
-	makeChart(mergeInfo(infos[i], spacemit_k1.run_results[i], "_ux900", "_X60"), false);
-}
+	<h4 id="k230_cmp" class="base">ASR results compare with K230 results</h4>
+	<script>
+	for (let i = 0; i < infos.length; i++) {
+		makeChart(mergeInfo(infos[i], k230.run_results[i], "_ux900", "_c908"), false);
+	}
+	</script>
 
-</script>
+	<h4 id="k1_cmp" class="base">ASR results compare with SpacemiT K1 results</h4>
+	<script>
+	for (let i = 0; i < infos.length; i++)
+		makeChart(mergeInfo(infos[i], spacemit_k1.run_results[i], "_ux900", "_X60"), false);
+	</script>
+
+	<h4 id="nofence" class="base">ASR nofence results</h4>
+	<script>
+	for (const info of nofence)
+		makeChart(info);
+	</script>
+
+	<h4 id="nofence_cmp" class="base">ASR nofence results compare with SpacemiT K1 results</h4>
+	<script>
+	for (let i = 0; i < infos.length; i++)
+		makeChart(mergeInfo(infos[i], spacemit_k1.nofence[i], "_ux900", "_X60", " nofence"), false);
+	</script>
 </body>
 </html>

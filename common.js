@@ -171,7 +171,7 @@ function makeChart(info, show = true) {
 	return u;
 }
 
-function mergeInfo(info_ori, info_run, suffix_ori = "_ori", suffix_run = "_run") {
+function mergeInfo(info_ori, info_run, suffix_ori = "_ori", suffix_run = "_run", title_suffix = "") {
 	let label_ori = info_ori.labels.slice(1);
 	for(let i = 0; i < label_ori.length; i++) {
 		label_ori[i] += suffix_ori;
@@ -212,7 +212,7 @@ function mergeInfo(info_ori, info_run, suffix_ori = "_ori", suffix_run = "_run")
 	const sortedData = combined.map(item => item.data);
 
 	return {
-		title: info_ori.title + " comparison",
+		title: info_ori.title + title_suffix + " comparison",
 		labels: sortedLabels,
 		data: sortedData,
 	};
