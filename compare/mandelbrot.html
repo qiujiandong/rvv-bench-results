@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>mandelbrot benchmark</title>
+		<link rel="stylesheet" href="../uPlot/dist/uPlot.min.css">
+		<link rel="stylesheet" href="../base.css">
+	</head>
+	<body>
+	<div id="main" class="base"><header><h1>mandelbrot benchmark</h1></header></div>
+	<script>let module = {};</script>
+	<script src="../uPlot/dist/uPlot.cjs.js"></script>
+	<script src="../templates/mandelbrot.js"></script>
+	<script src="../templates/common.js"></script>
+	<script src="./data/mandelbrot.js"></script>
+
+	<ul class="base">
+		<li><a href="#cmp">mandelbrot benchmark result compare</a></li>
+	</ul>
+
+	<h4 id="cmp" class="base">mandelbrot benchmark result compare</h4>
+	<script>
+    const infos = [
+        {
+            info: vl128dl128,
+            suffix: "_vl128dl128"
+        },
+        {
+            info: vl128dl64,
+            suffix: "_vl128dl64"
+        },
+        {
+            info: vl256dl256,
+            suffix: "_vl256dl256"
+        },
+    ];
+    const merged_infos = mergeInfo(infos);
+	makeChart(merged_infos, false);
+
+	</script>
+
+</body>
+</html>
