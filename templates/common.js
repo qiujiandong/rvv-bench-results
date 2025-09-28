@@ -186,6 +186,7 @@ function mergeInfo(items, title_suffix = "") {
 	const firstItemInfo = items[0].info;
 	const xAxisLabel = firstItemInfo.labels[0]; 
 	const xAxisData = firstItemInfo.data[0];
+    const data_len = firstItemInfo.data[0].length;
 
 	// 2. Use `flatMap` to process all items, creating a single combined array.
 	// This is more concise than looping and concatenating.
@@ -197,7 +198,7 @@ function mergeInfo(items, title_suffix = "") {
 		// Map each label/data pair to a new object with the suffixed label.
 		return labels.map((label, index) => ({
 			label: label + suffix,
-			data: dataPoints[index],
+			data: dataPoints[index].slice(0, data_len),
 		}));
 	});
 
