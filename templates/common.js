@@ -216,4 +216,13 @@ function mergeInfo(items, title_suffix = "") {
 	};
 }
 
+/**
+ * Render comparison chart for a given title and datasets.
+ */
+function renderComparison(title, datasets) {
+	const infos = datasets.map(d => ({ info: d.arr.find(it => it.title === title), suffix: d.suffix }))
+	const merged_infos = mergeInfo(infos);
+	makeChart(merged_infos, false);
+}
+
 document.getElementById("main").insertAdjacentHTML('beforeend', prefix);

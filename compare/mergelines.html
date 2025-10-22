@@ -3,15 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>mandelbrot benchmark</title>
+		<title>mergelines benchmark</title>
 		<link rel="stylesheet" href="../uPlot/dist/uPlot.min.css">
 		<link rel="stylesheet" href="../base.css">
 	</head>
 	<body>
-	<div id="main" class="base"><header><h1>mandelbrot benchmark</h1></header></div>
+	<div id="main" class="base"><header><h1>mergelines benchmark</h1></header></div>
 	<script>let module = {};</script>
 	<script src="../uPlot/dist/uPlot.cjs.js"></script>
-	<script src="../templates/mandelbrot.js"></script>
+	<script src="../templates/mergelines.js"></script>
 	<script src="../templates/common.js"></script>
 	<script src="./data/k1.js"></script>
 	<script src="./data/vl128dl128.js"></script>
@@ -28,7 +28,10 @@
 			{ arr: vl256dl256, suffix: "_vl256dl256" },
 			{ arr: vl256dl128, suffix: "_vl256dl128" },
 		];
-		renderComparison(targetTitle, datasets);
+		renderComparison("mergelines 2/3", datasets);
+		renderComparison("mergelines 2/16", datasets);
+		renderComparison("mergelines 2/32", datasets);
+		renderComparison("mergelines 2/256", datasets);
 	</script>
 
 </body>
